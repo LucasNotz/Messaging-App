@@ -1,17 +1,17 @@
 from tkinter import *
 from tkinter import ttk
 
-class MAloginGUI:
+class MAregisterGUI:
     #class to be called in main.py
     def __init__(self,root):
         self.root = root
         self.styling()
         self.baseFrame()
-        self.loginFrame()
+        self.registerFrame()
         self.chooseUser()
-        self.serverGuiLogin()
-        self.clientGuiLogin()
-        self.adminGuiLogin()
+        self.serverGuiRegister()
+        self.clientGuiRegister()
+        self.adminGuiRegister()
 
 
 
@@ -38,19 +38,19 @@ class MAloginGUI:
         ### user login
         ###
 
-    def loginFrame(self):
+    def registerFrame(self):
         #frame on base frame where login things will go
-        self.loginFrame = ttk.Frame(self.enterPage, width= 650, height=200,style="Blue.TFrame")
-        self.loginFrame.grid_propagate(False)
-        self.loginFrame.place(x=20,y=50)
+        self.registerFrame = ttk.Frame(self.enterPage, width= 650, height=200,style="Blue.TFrame")
+        self.registerFrame.grid_propagate(False)
+        self.registerFrame.place(x=20,y=50)
 
     def chooseUser(self):
         #label for choose user
-        self.userType_label = ttk.Label(self.loginFrame, text="Select user type to login", font=("Comic sans", 10, "bold")).grid(column=2,row=4, sticky=NSEW, padx=5,pady=5)
+        self.userType_label = ttk.Label(self.registerFrame, text="Select user type to register", font=("Comic sans", 10, "bold")).grid(column=2,row=4, sticky=NSEW, padx=5,pady=5)
 
         #radiobutton choose usertype
         self.userType = StringVar()
-        self.radioButtonUser = ttk.Frame(self.loginFrame, width=200, height= 300,style="Green.TFrame")
+        self.radioButtonUser = ttk.Frame(self.registerFrame, width=200, height= 300,style="Green.TFrame")
         self.radioButtonUser.grid_propagate(False)
         self.radioButtonUser.grid(column=2,row=6, sticky=NSEW)
         self.chooseUserSH = ttk.Radiobutton(self.radioButtonUser, text="Host", variable=self.userType, value="s", command=self.chooseOption)
@@ -62,11 +62,11 @@ class MAloginGUI:
         self.chooseUserA.grid(row=2, column=0, sticky="w", pady=2)
 
     def buttonCommandPlaceHolder(self):
-        print("button pressed")
+        print("button pressed3")
 
-    def serverGuiLogin(self):
+    def serverGuiRegister(self):
         #create host login frame
-        self.sFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.sFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
         self.sFrame.grid_propagate(False)
         self.sFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -75,12 +75,12 @@ class MAloginGUI:
         self.sLabel.grid(column=0,row=0)
 
         #login info stuff
-        self.sUserLoginLabel = ttk.Label(self.sFrame, text="Login:")
-        self.sUserLoginLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
+        self.sUserRegisterLabel = ttk.Label(self.sFrame, text="Register:")
+        self.sUserRegisterLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
 
         self.sUsername = StringVar()
-        self.sUserLoginEntry = ttk.Entry(self.sFrame,width=12,textvariable=self.sUsername)
-        self.sUserLoginEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
+        self.sUserRegisterEntry = ttk.Entry(self.sFrame,width=12,textvariable=self.sUsername)
+        self.sUserRegisterEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
 
         self.sUserPassLabel = ttk.Label(self.sFrame, text="Password:")
         self.sUserPassLabel.grid(column=0,row=3,sticky=NSEW,pady=10,padx=10)
@@ -89,15 +89,15 @@ class MAloginGUI:
         self.sUserPassEntry = ttk.Entry(self.sFrame,width=12,textvariable=self.sPass)
         self.sUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.sUserLoginButton = ttk.Button(self.sFrame,text="Validate",command=self.buttonCommandPlaceHolder)
-        self.sUserLoginButton.grid(column=1,row=4)
+        self.sUserRegisterButton = ttk.Button(self.sFrame,text="Register",command=self.buttonCommandPlaceHolder)
+        self.sUserRegisterButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
         self.sFrame.grid_forget()
 
-    def clientGuiLogin(self):
+    def clientGuiRegister(self):
         #create host login frame
-        self.cFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.cFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
         self.cFrame.grid_propagate(False)
         self.cFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -106,12 +106,12 @@ class MAloginGUI:
         self.cLabel.grid(column=0,row=0)
 
         #login info stuff
-        self.cUserLoginLabel = ttk.Label(self.cFrame, text="Login:")
-        self.cUserLoginLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
+        self.cUserRegisterLabel = ttk.Label(self.cFrame, text="Register:")
+        self.cUserRegisterLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
 
         self.cUsername = StringVar()
-        self.cUserLoginEntry = ttk.Entry(self.cFrame,width=12,textvariable=self.cUsername)
-        self.cUserLoginEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
+        self.cUserRegisterEntry = ttk.Entry(self.cFrame,width=12,textvariable=self.cUsername)
+        self.cUserRegisterEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
 
         self.cUserPassLabel = ttk.Label(self.cFrame, text="Password:")
         self.cUserPassLabel.grid(column=0,row=3,sticky=NSEW,pady=10,padx=10)
@@ -120,15 +120,15 @@ class MAloginGUI:
         self.cUserPassEntry = ttk.Entry(self.cFrame,width=12,textvariable=self.cPass)
         self.cUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.cUserLoginButton = ttk.Button(self.cFrame,text="Validate",command=self.buttonCommandPlaceHolder)
-        self.cUserLoginButton.grid(column=1,row=4)
+        self.cUserRegisterButton = ttk.Button(self.cFrame,text="Register",command=self.buttonCommandPlaceHolder)
+        self.cUserRegisterButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
         self.cFrame.grid_forget()
 
-    def adminGuiLogin(self):
+    def adminGuiRegister(self):
         #create host login frame
-        self.aFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.aFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
         self.aFrame.grid_propagate(False)
         self.aFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -137,12 +137,12 @@ class MAloginGUI:
         self.aLabel.grid(column=0,row=0)
 
         #login info stuff
-        self.aUserLoginLabel = ttk.Label(self.aFrame, text="Login:")
-        self.aUserLoginLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
+        self.aUserRegisterLabel = ttk.Label(self.aFrame, text="Register:")
+        self.aUserRegisterLabel.grid(column=0,row=2,sticky=NSEW,pady=10,padx=10)
 
         self.aUsername = StringVar()
-        self.aUserLoginEntry = ttk.Entry(self.aFrame,width=12,textvariable=self.aUsername)
-        self.aUserLoginEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
+        self.aUserRegisterEntry = ttk.Entry(self.aFrame,width=12,textvariable=self.aUsername)
+        self.aUserRegisterEntry.grid(column=1, row=2,sticky=NSEW,pady=10,padx=10)
 
         self.aUserPassLabel = ttk.Label(self.aFrame, text="Password:")
         self.aUserPassLabel.grid(column=0,row=3,sticky=NSEW,pady=10,padx=10)
@@ -151,8 +151,12 @@ class MAloginGUI:
         self.aUserPassEntry = ttk.Entry(self.aFrame,width=12,textvariable=self.aPass)
         self.aUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.aUserLoginButton = ttk.Button(self.aFrame,text="Validate",command=self.buttonCommandPlaceHolder)
-        self.aUserLoginButton.grid(column=1,row=4)
+        self.aKey = StringVar()
+        self.aKeyEntry = ttk.Entry(self.aFrame, width=6, textvariable=self.aKey)
+        self.aKeyEntry.grid(column=0,row=4)
+
+        self.aUserRegisterButton = ttk.Button(self.aFrame,text="Register",command=self.buttonCommandPlaceHolder)
+        self.aUserRegisterButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
         self.aFrame.grid_forget()
