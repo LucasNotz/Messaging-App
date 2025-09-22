@@ -53,7 +53,7 @@ class MAloginGUI:
         self.radioButtonUser = ttk.Frame(self.loginFrame, width=200, height= 300,style="Green.TFrame")
         self.radioButtonUser.grid_propagate(False)
         self.radioButtonUser.grid(column=2,row=6, sticky=NSEW)
-        self.chooseUserSH = ttk.Radiobutton(self.radioButtonUser, text="Host", variable=self.userType, value="s", command=self.chooseOption)
+        self.chooseUserSH = ttk.Radiobutton(self.radioButtonUser, text="Server", variable=self.userType, value="s", command=self.chooseOption)
         self.chooseUserSC = ttk.Radiobutton(self.radioButtonUser, text="Client", variable=self.userType, value="c", command=self.chooseOption)
         self.chooseUserA = ttk.Radiobutton(self.radioButtonUser, text="Admin", variable=self.userType, value="a", command=self.chooseOption)
         #no () used because it is callable, chooseOption() calls immediately

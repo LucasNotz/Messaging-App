@@ -1,12 +1,13 @@
 from tkinter import *
 from tkinter import ttk
 
-from loginGUI import MAloginGUI
-from loginORregister import MAlogORreg
-from registerGUI import MAregisterGUI
+from loginGUI import *
+from loginORregister import *
+from registerGUI import *
+from database import *
 
-#main window where class instances will appear
-adminKey="12345"
+#creates tables if none exist
+MAdatabase.createTables()
 
 root = Tk()
 
