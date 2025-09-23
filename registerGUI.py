@@ -32,12 +32,20 @@ class MAregisterGUI:
 
     def baseFrame(self):
         #frame where all widgets will go
-        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=300, style="Black.TFrame")
+        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=350, style="Black.TFrame")
         self.enterPage.grid(column=0,row=0,sticky=(N,W,E,S),pady=5)
         self.enterPage.grid_propagate(False)
 
         #title for basefame
-        self.loginTitle = ttk.Label(self.enterPage, text="Messaging App", font=("Comic sans", 15,"bold")).grid(column=8,row=2,sticky=NSEW,pady=20)
+        self.loginTitle = ttk.Label(self.enterPage, text="Messaging App", font=("Comic sans", 15,"bold")).grid(column=8,row=0,sticky=NSEW,pady=0)
+
+        #go back to login or register page
+        self.backButton = ttk.Button(self.enterPage, text="Login Page",width=20,command=self.backByOne).grid(column=10,row=0,sticky=NSEW,padx=20,pady=30)
+
+    def backByOne(self):
+        self.root.quit()
+
+
 
         ###
         ### user register
@@ -45,9 +53,9 @@ class MAregisterGUI:
 
     def registerFrame(self):
         #frame on base frame where login things will go
-        self.registerFrame = ttk.Frame(self.enterPage, width= 650, height=200,style="Blue.TFrame")
+        self.registerFrame = ttk.Frame(self.enterPage, width= 650, height=200)
         self.registerFrame.grid_propagate(False)
-        self.registerFrame.place(x=20,y=50)
+        self.registerFrame.place(x=20,y=70)
 
     def chooseUser(self):
         #label for choose user
@@ -55,7 +63,7 @@ class MAregisterGUI:
 
         #radiobutton choose usertype
         self.userType = StringVar()
-        self.radioButtonUser = ttk.Frame(self.registerFrame, width=200, height= 300,style="Green.TFrame")
+        self.radioButtonUser = ttk.Frame(self.registerFrame, width=200, height= 300)
         self.radioButtonUser.grid_propagate(False)
         self.radioButtonUser.grid(column=2,row=6, sticky=NSEW)
         self.chooseUserSH = ttk.Radiobutton(self.radioButtonUser, text="Server", variable=self.userType, value="s", command=self.chooseOption)
@@ -71,7 +79,7 @@ class MAregisterGUI:
 
     def serverGuiRegister(self):
         #create host login frame
-        self.sFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
+        self.sFrame = ttk.Frame(self.registerFrame, width=300, height= 300)
         self.sFrame.grid_propagate(False)
         self.sFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -102,7 +110,7 @@ class MAregisterGUI:
 
     def clientGuiRegister(self):
         #create host login frame
-        self.cFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
+        self.cFrame = ttk.Frame(self.registerFrame, width=300, height= 300)
         self.cFrame.grid_propagate(False)
         self.cFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -133,7 +141,7 @@ class MAregisterGUI:
 
     def adminGuiRegister(self):
         #create host login frame
-        self.aFrame = ttk.Frame(self.registerFrame, width=300, height= 300,style="Red.TFrame")
+        self.aFrame = ttk.Frame(self.registerFrame, width=300, height= 300)
         self.aFrame.grid_propagate(False)
         self.aFrame.grid(column=4, row=6,sticky=NSEW)
 

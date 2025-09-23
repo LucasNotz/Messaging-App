@@ -2,11 +2,18 @@ import sqlite3
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from cryptography import *
+import hashlib
 
 
 class MAdatabase:
     adminKey="12345"
+
+
+    def hash_password(password):
+        password_bytes = password.encode("utf-8")
+        hashed = hashlib.sha256(password_bytes).hexdigest()
+        return hashed
+
 
     def createTables():
         #connects to db
