@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk
+from database import *
 
 class MAloginGUI:
+    dbR = MAdatabase()
     #class to be called in main.py
     def __init__(self,root):
         self.root = root
@@ -64,6 +66,7 @@ class MAloginGUI:
     def buttonCommandPlaceHolder(self):
         print("button pressed")
 
+
     def serverGuiLogin(self):
         #create host login frame
         self.sFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
@@ -89,7 +92,7 @@ class MAloginGUI:
         self.sUserPassEntry = ttk.Entry(self.sFrame,width=12,textvariable=self.sPass)
         self.sUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.sUserLoginButton = ttk.Button(self.sFrame,text="Validate",command=self.buttonCommandPlaceHolder)
+        self.sUserLoginButton = ttk.Button(self.sFrame,text="Validate",command=lambda:self.dbR.logUserS(self.sUsername,self.sPass))
         self.sUserLoginButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
@@ -120,7 +123,7 @@ class MAloginGUI:
         self.cUserPassEntry = ttk.Entry(self.cFrame,width=12,textvariable=self.cPass)
         self.cUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.cUserLoginButton = ttk.Button(self.cFrame,text="Validate",command=self.buttonCommandPlaceHolder)
+        self.cUserLoginButton = ttk.Button(self.cFrame,text="Validate",command=lambda:self.dbR.logUserC(self.cUsername,self.cPass))
         self.cUserLoginButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
@@ -151,7 +154,7 @@ class MAloginGUI:
         self.aUserPassEntry = ttk.Entry(self.aFrame,width=12,textvariable=self.aPass)
         self.aUserPassEntry.grid(column=1, row=3,sticky=NSEW,pady=10,padx=10)
 
-        self.aUserLoginButton = ttk.Button(self.aFrame,text="Validate",command=self.buttonCommandPlaceHolder)
+        self.aUserLoginButton = ttk.Button(self.aFrame,text="Validate",command=lambda:self.dbR.logUserA(self.aUsername,self.aPass))
         self.aUserLoginButton.grid(column=1,row=4)
 
         #make grid disappear until called uppon
