@@ -264,6 +264,7 @@ class MAdatabase:
             userLoggedUser.set(f"{username}")
             self.openUserSession(userLoggedUser.get(),userLoggedType.get())
 
+
         else:
             messagebox.showerror("Login failed", ("Try again"))
 

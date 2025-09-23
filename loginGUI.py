@@ -7,13 +7,16 @@ class MAloginGUI:
     #class to be called in main.py
     def __init__(self,root):
         self.root = root
-        self.styling()
         self.baseFrame()
         self.loginFrame()
         self.chooseUser()
         self.serverGuiLogin()
         self.clientGuiLogin()
         self.adminGuiLogin()
+        self.nextPageA()
+        self.nextPageC()
+        self.nextPageS()
+
 
 
 
@@ -29,7 +32,7 @@ class MAloginGUI:
 
     def baseFrame(self):
         #frame where all widgets will go
-        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=300, style="Black.TFrame")
+        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=300)
         self.enterPage.grid(column=0,row=0,sticky=(N,W,E,S),pady=5)
         self.enterPage.grid_propagate(False)
 
@@ -42,7 +45,7 @@ class MAloginGUI:
 
     def loginFrame(self):
         #frame on base frame where login things will go
-        self.loginFrame = ttk.Frame(self.enterPage, width= 650, height=200,style="Blue.TFrame")
+        self.loginFrame = ttk.Frame(self.enterPage, width= 650, height=200)
         self.loginFrame.grid_propagate(False)
         self.loginFrame.place(x=20,y=50)
 
@@ -52,7 +55,7 @@ class MAloginGUI:
 
         #radiobutton choose usertype
         self.userType = StringVar()
-        self.radioButtonUser = ttk.Frame(self.loginFrame, width=200, height= 300,style="Green.TFrame")
+        self.radioButtonUser = ttk.Frame(self.loginFrame, width=200, height= 300)
         self.radioButtonUser.grid_propagate(False)
         self.radioButtonUser.grid(column=2,row=6, sticky=NSEW)
         self.chooseUserSH = ttk.Radiobutton(self.radioButtonUser, text="Server", variable=self.userType, value="s", command=self.chooseOption)
@@ -69,7 +72,7 @@ class MAloginGUI:
 
     def serverGuiLogin(self):
         #create host login frame
-        self.sFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.sFrame = ttk.Frame(self.loginFrame, width=300, height= 300)
         self.sFrame.grid_propagate(False)
         self.sFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -100,7 +103,7 @@ class MAloginGUI:
 
     def clientGuiLogin(self):
         #create host login frame
-        self.cFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.cFrame = ttk.Frame(self.loginFrame, width=300, height= 300)
         self.cFrame.grid_propagate(False)
         self.cFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -131,7 +134,7 @@ class MAloginGUI:
 
     def adminGuiLogin(self):
         #create host login frame
-        self.aFrame = ttk.Frame(self.loginFrame, width=300, height= 300,style="Red.TFrame")
+        self.aFrame = ttk.Frame(self.loginFrame, width=300, height= 300)
         self.aFrame.grid_propagate(False)
         self.aFrame.grid(column=4, row=6,sticky=NSEW)
 
@@ -160,6 +163,16 @@ class MAloginGUI:
         #make grid disappear until called uppon
         self.aFrame.grid_forget()
 
+
+    def nextPageS(self):
+        self.btn = ttk.Button(self.sFrame,text="Chat",command=lambda:self.close()).grid(column=3,row=3,sticky=NSEW)
+
+    def nextPageC(self):
+        self.btn = ttk.Button(self.cFrame,text="Chat",command=lambda:self.close()).grid(column=3,row=3,sticky=NSEW)
+
+    def nextPageA(self):
+        self.btn = ttk.Button(self.aFrame,text="Chat",command=lambda:self.close()).grid(column=3,row=3,sticky=NSEW)
+
     def chooseOption(self):
         #hides all frames
         self.sFrame.grid_forget()
@@ -178,8 +191,8 @@ class MAloginGUI:
             self.aFrame.grid(column=4, row=6,sticky=NSEW)
 
 
-
-
+    def close(self):
+        self.enterPage.quit()
 
 
     def run(self):

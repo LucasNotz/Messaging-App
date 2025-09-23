@@ -8,7 +8,6 @@ class MAregisterGUI:
     #class to be called in main.py
     def __init__(self,root):
         self.root = root
-        self.styling()
         self.baseFrame()
         self.registerFrame()
         self.chooseUser()
@@ -32,7 +31,7 @@ class MAregisterGUI:
 
     def baseFrame(self):
         #frame where all widgets will go
-        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=350, style="Black.TFrame")
+        self.enterPage = ttk.Frame(self.root,padding=(6,6,15,15), width=700,height=350)
         self.enterPage.grid(column=0,row=0,sticky=(N,W,E,S),pady=5)
         self.enterPage.grid_propagate(False)
 

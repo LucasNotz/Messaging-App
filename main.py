@@ -6,15 +6,19 @@ from loginORregister import *
 from registerGUI import *
 from database import *
 
+from adminGUI import *
+from serverGUI import *
+from clientGUI import *
+
 #creates tables if none exist
 db = MAdatabase()
+MAdatabase.closeUserSession()
+#garantees thats active user can be established
 
 #create frame prime (autobots, assemble)
 
 root = Tk()
-
-## test
-
+root.title("MessagingApp")
 
 
 
@@ -25,7 +29,7 @@ firstPage = MAlogORreg(root)
 firstPage.run()
 
 #it quits itself when choice is made
-
+var1 = False
 
 #decides to go to register or login
 if (firstPage.choice.get() == "l"):
@@ -38,11 +42,27 @@ elif (firstPage.choice.get() == "r"):
     registerPage.run()
     loginPage2 = MAloginGUI(root)
     loginPage2.run()
+    var1 = True
 
-print(MAdatabase.retriveActiveUser())
 
-MAdatabase.closeUserSession()
+currentUser = MAdatabase.retriveActiveUser()
+user = currentUser[0][0]
+tipo = currentUser[0][1]
+if ((user and tipo) and var1):
+    loginPage2.close()
+else:
+    loginPage.close()
 
+
+if (tipo == "s"):
+    serverPage = MAserverGUI(root)
+    serverPage.run()
+elif (tipo == "c"):
+    clientPage = MAclientGUI(root)
+    clientPage.run()
+elif (tipo == "a"):
+    adminPage = MAadminGUI(root)
+    adminPage.run()
 
 
 

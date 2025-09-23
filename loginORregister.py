@@ -4,7 +4,6 @@ from tkinter import ttk
 class MAlogORreg:
     def __init__(self,root):
         self.root = root
-        self.styling()
         self.baseFrame2()
         self.chooseLR()
 
@@ -20,7 +19,7 @@ class MAlogORreg:
 
     def baseFrame2(self):
         #holds the info for choosing
-        self.frameLR = ttk.Frame(self.root, width=400, height=200, style="Red.TFrame")
+        self.frameLR = ttk.Frame(self.root, width=400, height=200)
         self.frameLR.grid_propagate(False)
         self.frameLR.grid(column=0,row=0)
 
