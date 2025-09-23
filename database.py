@@ -42,7 +42,7 @@ class MAdatabase:
         conn = sqlite3.connect("MessagingApp.db")
         cursor = conn.cursor()
         cursor.execute(
-            "delete * from active where num=1"
+            "delete from active"
             )
         conn.commit()
         conn.close()
@@ -233,7 +233,7 @@ class MAdatabase:
             messagebox.showinfo("Success", f"Welcome {username}")
             userLoggedType.set("c")
             userLoggedUser.set(f"{username}")
-            openUserSession(userLoggedUser.get,userLoggedType.get())
+            self.openUserSession(userLoggedUser.get(),userLoggedType.get())
 
         else:
             messagebox.showerror("Login failed", ("Try again"))
@@ -262,7 +262,7 @@ class MAdatabase:
             messagebox.showinfo("Success", f"Welcome {username}")
             userLoggedType.set("a")
             userLoggedUser.set(f"{username}")
-            openUserSession(userLoggedUser.get,userLoggedType.get())
+            self.openUserSession(userLoggedUser.get(),userLoggedType.get())
 
         else:
             messagebox.showerror("Login failed", ("Try again"))

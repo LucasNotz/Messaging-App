@@ -41,6 +41,8 @@ elif (firstPage.choice.get() == "r"):
 
 print(MAdatabase.retriveActiveUser())
 
+MAdatabase.closeUserSession()
+
 
 
 
