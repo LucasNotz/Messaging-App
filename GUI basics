@@ -1,0 +1,150 @@
+package apresentacao;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class Visao extends JFrame {
+	//propriedades da classe
+	private static final long serialVersionUID = 1L;
+	private JMenuBar barraMenu = new JMenuBar(); // menu on top
+	private JMenu mnuArquivo = new JMenu("Arquivo"); // appears under
+	private JMenu mnuEditar = new JMenu("Editar");
+	private JMenuItem mnuiNovo = new JMenuItem("Novo"); // appears under each under 
+	private JMenuItem mnuiAbrir = new JMenuItem("Abrir");
+	private JMenuItem mnuiSair = new JMenuItem("Sair");
+	private JMenuItem mnuiCopiar = new JMenuItem("Copiar");
+	private JMenuItem mnuiColar = new JMenuItem("Colar");
+	private JLabel lblcaixaTexto = new JLabel("Insira um texto");
+	private JTextField txtcaixaTexto = new JTextField();
+	private JLabel lblcaixaText2 = new JLabel("Area de text");
+	private JTextArea txtArea = new JTextArea();
+	private JScrollPane scrollText = new JScrollPane(txtArea); // area de txt qeu entra dentro da barra de rollagem
+	private JLabel lbl = new JLabel("Box type shi");
+	private JComboBox<String> box = new JComboBox<String>();
+	private JCheckBox check = new JCheckBox("Vender!");
+	private JLabel lbl2 = new JLabel("Qual o seu nome?");
+	private ButtonGroup bg = new ButtonGroup();
+	private JRadioButton rbt1 = new JRadioButton("Yes");
+	private JRadioButton rbt2 = new JRadioButton("Try again");
+	private JLabel lbl3 = new JLabel("Lista");
+
+	private JList<String> list = new JList<String>();
+	private DefaultListModel<String> lm = new DefaultListModel<String>();
+	private JScrollPane jsp = new JScrollPane(list);
+	
+	private JButton btnSair = new JButton("Sair");
+
+	// main method everything here will run similar but not equal to python __init__
+	public static void main(String args[]) {
+		new Visao().setVisible(true); 
+
+		
+	}
+
+	//contructor method
+	public Visao() {
+		//config
+		setTitle("This window");
+		setSize(1027,768);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setLayout(null);
+		
+		//menu config
+		setJMenuBar(barraMenu);// add barmenue to visao
+		
+		barraMenu.add(mnuArquivo);//adicionar mnu a barra
+		barraMenu.add(mnuEditar);
+		
+		mnuArquivo.add(mnuiNovo);// adicionar itens as barras
+		mnuArquivo.add(mnuiAbrir);
+		mnuArquivo.addSeparator();
+		mnuArquivo.add(mnuiSair);
+		
+		mnuEditar.add(mnuiCopiar);
+		mnuEditar.add(mnuiColar);
+		
+		//action listener 
+		mnuiNovo.addActionListener(new ControladorNovo());
+		mnuiAbrir.addActionListener(new ControladorAbrir());
+		mnuiSair.addActionListener(new ControladorSair());
+		mnuiCopiar.addActionListener(new ControladorCopiar());
+		mnuiColar.addActionListener(new ControladorColar());
+		
+		//config button
+		btnSair.setBounds(800,600,150,50);
+		add(btnSair);
+		btnSair.addActionListener(new ControladorbtnSair());
+		
+		//config label
+		lblcaixaTexto.setBounds(20,20,100,20);
+		add(lblcaixaTexto);
+		
+		//config textfeild
+		txtcaixaTexto.setBounds(20, 40, 200, 60);
+		add(txtcaixaTexto);
+		
+		//config label2
+		lblcaixaText2.setBounds(20,100,100,20);
+		add(lblcaixaText2);
+		
+		//text area config
+		scrollText.setBounds(20, 125, 600, 400);
+		add(scrollText);
+		
+		//box
+		lbl.setBounds(300,20,100,20);
+		add(lbl);
+		box.setBounds(300,40,100,20);
+		add(box);
+		box.addItem("--select--");
+		box.addItem("Sua alma");
+		box.addItem("Sua bunda");
+		//checkbox
+		check.setBounds(400, 40, 150, 20);
+		add(check);
+		//radiobutton
+		lbl2.setBounds(560, 20, 150,20);
+		add(lbl2);
+		rbt1.setBounds(560,40,100,20);
+		add(rbt1);
+		rbt2.setBounds(560,60,100,20);
+		add(rbt2);
+		bg.add(rbt1);
+		bg.add(rbt2);
+		rbt1.setSelected(true);
+		//lista op
+		lbl3.setBounds(660,20,200,20);
+		add(lbl3);
+		jsp.setBounds(760, 20, 160, 200);
+		add(jsp);
+		list.setModel(lm);
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		lm.addElement("1");
+		
+		
+	}
+}
